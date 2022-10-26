@@ -1,6 +1,5 @@
 title: Another boring blog.
 #email: your-email@example.org
-
 description: A flowery description of my fantastic blog -- ultimately trying to convey how clever I think I am.
 
 # Build settings
@@ -11,3 +10,7 @@ kramdown:
 
 plugins:
   - jekyll-feed
+
+kramdown:
+  math_engine:         katex
+  math_engine_opts:    {}

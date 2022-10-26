@@ -32,4 +32,7 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 # do not have a Java counterpart.
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
+gem "kramdown-math-katex"
 gem "webrick", "~> 1.7"
+gem "therubyracer"
+#gem "execjs"
