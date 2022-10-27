@@ -1,5 +1,10 @@
-title: Another boring blog.
+title: Blog.
 #email: your-email@example.org
-description: A flowery description of my fantastic blog -- ultimately trying to convey how clever I think I am.
+description: --Spencer Hobson-Guti&eacute;rrez 
+#A flowery description of my fantastic blog -- ultimately trying to convey how clever I think I am.
 
 theme: minima
+
+collections:
+  topics:
+    output: true

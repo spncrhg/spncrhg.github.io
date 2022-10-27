@@ -1,0 +1,10 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+@import "{{ site.theme }}";
+.site-title {font-size: 30px;}
+.site-header {border: none;}
+.site-footer {display: none;}
