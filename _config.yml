@@ -5,6 +5,9 @@ description: --Spencer Hobson-Guti&eacute;rrez
 
 theme: minima
 
+baseurl: ""
+url: http://spncrhg.github.io
+
 collections:
   topics:
     output: true
