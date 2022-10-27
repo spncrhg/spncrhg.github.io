@@ -1,7 +1,6 @@
 ---
 layout: default
 title:  "Topic 1"
-katex: True
 ---
 ## **A basic topic title**
 
