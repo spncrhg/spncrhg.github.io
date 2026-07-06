@@ -1,10 +1,15 @@
-title: Blog.--Spencer Hobson-Guti&eacute;rrez 
-
-theme: minima
+title: Spencer Hobson-Gutiérrez
+author: Spencer Hobson-Gutiérrez
+description: >-
+  Personal site and notes.
 
 baseurl: ""
-url: http://spncrhg.github.io
+url: https://spncrhg.github.io
 
 collections:
   topics:
     output: true
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

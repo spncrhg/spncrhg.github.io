@@ -1,10 +1,95 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+# Front matter (even empty) tells Jekyll to process this file.
 ---
 
-@import "minima";
+/* ubuntu-mono-regular - latin */
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/ubuntu-mono-v15-latin-regular.woff2') format('woff2'),
+       url('../fonts/ubuntu-mono-v15-latin-regular.woff') format('woff');
+}
 
-@import "{{ site.theme }}";
-.site-title {font-size: 30px;}
-.site-header {border: none;}
-.site-footer {display: none;}
+:root {
+  --fg: #111;
+  --bg: #fdfdfd;
+  --accent: #b91c1c;      /* link hover */
+  --muted: #666;
+  --measure: 42rem;       /* readable line length */
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Ubuntu Mono', ui-monospace, monospace;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+/* Single centered column shared by header, content, footer */
+.wrapper {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Header / prompt */
+.site-header { padding: 1.75rem 0 0.5rem; }
+.site-title {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.page-content { padding: 1.5rem 0 3rem; }
+
+/* Typography */
+h1, h2, h3, h4 { line-height: 1.25; margin: 1.6rem 0 0.6rem; }
+p, ul, ol { margin: 0 0 1rem; }
+
+a { color: var(--fg); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: var(--accent); }
+
+/* Code */
+code, pre { font-family: inherit; }
+code {
+  background: #f0f0f0;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  font-size: 0.95em;
+}
+pre {
+  background: #f0f0f0;
+  padding: 0.9rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+pre code { background: none; padding: 0; }
+
+blockquote {
+  margin: 0 0 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid #ddd;
+  color: var(--muted);
+}
+
+img { max-width: 100%; height: auto; }
+
+hr { border: none; border-top: 1px solid #ddd; margin: 2rem 0; }
+
+/* Footer */
+.site-footer {
+  padding: 1.5rem 0;
+  border-top: 1px solid #eee;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.site-footer a { color: var(--muted); }
