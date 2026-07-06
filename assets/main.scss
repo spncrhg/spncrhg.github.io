@@ -26,11 +26,14 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  font-family: 'Ubuntu Mono', ui-monospace, monospace;
+  font-family: 'Special Elite', 'Ubuntu Mono', ui-monospace, monospace;
   font-size: 18px;
   line-height: 1.55;
   color: var(--fg);
-  background: var(--bg);
+  /* Faint cream paper texture (from textures/basic.svg), embedded as a
+     data-URI so it deploys without a separate asset. */
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23e3d5b0' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'/%3E%3C/svg%3E");
 }
 
 /* Single centered column shared by header, content, footer */
