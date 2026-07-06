@@ -58,8 +58,33 @@ body {
 h1, h2, h3, h4 { line-height: 1.25; margin: 1.6rem 0 0.6rem; }
 p, ul, ol { margin: 0 0 1rem; }
 
-a { color: var(--fg); text-decoration: underline; text-underline-offset: 2px; }
-a:hover { color: var(--accent); }
+a { color: var(--fg); font-weight: 400; text-decoration: underline; text-underline-offset: 2px; }
+/* Hover pools the ink: a heavier displacement + faux bold, no color shift. */
+a:hover { color: var(--fg); font-weight: 700; filter: url(#ink-strong); }
+
+/* ---- Inky "post-process" pass -------------------------------------------
+   1. Roughen the edges of all rendered text/marks (the displacement filter
+      acts like an ink-bleed shader over whatever these containers paint). */
+.site-header, .page-content, .site-footer { filter: url(#ink); }
+
+/* 2. Full-screen grain layer, multiplied over everything like ink mottling
+      soaked into the paper. Fixed + pointer-events:none so it never
+      interferes with interaction or scrolling. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Respect users who ask for reduced effects / cleaner rendering. */
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .page-content, .site-footer, a:hover { filter: none; }
+}
 
 /* Code */
 code, pre { font-family: inherit; }
