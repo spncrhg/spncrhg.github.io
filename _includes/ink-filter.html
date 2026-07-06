@@ -1,13 +1,25 @@
-<!-- Inky "post-process" filters. Two SVG filters used from main.scss:
-     #ink      – roughens edges (procedural noise -> displacement), like ink bleed.
-     rendered off-screen; the <svg> itself draws nothing. -->
+<!-- Inky "post-process" filters (SVG). feDisplacementMap renders noticeably
+     stronger in Gecko/Firefox than in Blink/Chromium for the same `scale`,
+     so we ship two strengths:
+       #ink       / #ink-strong       – default, tuned UP for Chromium.
+       #ink-soft  / #ink-soft-strong  – tuned DOWN, handed to Firefox via a
+                                        Firefox-only @supports block in main.scss.
+     The <svg> itself draws nothing (0x0, off-screen). -->
 <svg class="ink-defs" width="0" height="0" aria-hidden="true" focusable="false">
   <defs>
+    <!-- Resting roughen. -->
     <filter id="ink" x="-10%" y="-10%" width="120%" height="120%"
             color-interpolation-filters="sRGB">
       <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018"
                     numOctaves="2" seed="7" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2"
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.8"
+                         xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="ink-soft" x="-10%" y="-10%" width="120%" height="120%"
+            color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018"
+                    numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1"
                          xChannelSelector="R" yChannelSelector="G"/>
     </filter>
 
@@ -16,7 +28,14 @@
             color-interpolation-filters="sRGB">
       <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03"
                     numOctaves="2" seed="4" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5"
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4.5"
+                         xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="ink-soft-strong" x="-15%" y="-15%" width="130%" height="130%"
+            color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03"
+                    numOctaves="2" seed="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8"
                          xChannelSelector="R" yChannelSelector="G"/>
     </filter>
   </defs>

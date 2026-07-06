@@ -78,8 +78,16 @@ body::after {
   z-index: 9999;
   pointer-events: none;
   mix-blend-mode: multiply;
-  opacity: 0.5;
+  opacity: 0.25;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Firefox renders the displacement much stronger than Chromium, so hand it
+   the softened filter variants. `-moz-appearance` is Firefox-only, so this
+   block never applies in Blink/WebKit. */
+@supports (-moz-appearance: none) {
+  .site-header, .page-content, .site-footer { filter: url(#ink-soft); }
+  a:hover { filter: url(#ink-soft-strong); }
 }
 
 /* Respect users who ask for reduced effects / cleaner rendering. */
