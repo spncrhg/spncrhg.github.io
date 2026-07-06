@@ -58,9 +58,10 @@ body {
 h1, h2, h3, h4 { line-height: 1.25; margin: 1.6rem 0 0.6rem; }
 p, ul, ol { margin: 0 0 1rem; }
 
-a { color: var(--fg); font-weight: 400; text-decoration: underline; text-underline-offset: 2px; }
-/* Hover pools the ink: a heavier displacement + faux bold, no color shift. */
-a:hover { color: var(--fg); font-weight: 700; filter: url(#ink-strong); }
+a { color: var(--fg); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+/* Hover pools the ink via a heavier displacement only — no weight change,
+   so the text roughens in place instead of bolding and shoving the line. */
+a:hover { color: var(--fg); filter: url(#ink-strong); }
 
 /* ---- Inky "post-process" pass -------------------------------------------
    1. Roughen the edges of all rendered text/marks (the displacement filter
